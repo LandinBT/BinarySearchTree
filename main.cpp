@@ -1,6 +1,9 @@
-///2023 LandinBT
-#include "bstinterface.hpp"
+/// 2023 LandinBT
+#include <locale>
+
+#include "userinterface.hpp"
 
 int main() {
-    new BSTInterface();
-    }
+  setlocale(LC_ALL, "Spanish");
+  new UserInterface();
+}
