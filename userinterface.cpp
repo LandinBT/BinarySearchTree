@@ -175,9 +175,11 @@ void UserInterface::exportBackup() {
 
 UserInterface::UserInterface() {
   unsigned short op;
+  books=new BST<Book>();
+  setlocale(LC_ALL, "Spanish");
 
   do{
-    system("cls");
+    setlocale(LC_ALL, "Spanish");system("cls");
     cout<<"--- -- - M E N Ú - -- ---"<<endl
         <<endl
         <<"1. Agregar un libro"<<endl
