@@ -9,7 +9,7 @@ void UserInterface::addBook() {
 
   do{
     system("cls");
-    cout<<"*** Agregar Libro ***"<<endl<<endl<<"TÃ­tulo del libro: ";
+    cout<<"*** Agregar Libro ***"<<endl<<endl<<"Título del libro: ";
     getline(cin, str);
     book.setTitle(str);
 
@@ -17,7 +17,7 @@ void UserInterface::addBook() {
     getline(cin, str);
     book.setAuthor(str);
 
-    cout<<"PÃ¡ginas: ";
+    cout<<"Páginas: ";
     cin>>p;
     cin.ignore();
     book.setPages(p);
@@ -27,7 +27,7 @@ void UserInterface::addBook() {
     try{
       books->insertData(book);
     }catch(const typename BST<Book>::Exception& ex){
-      cout<<"Algo saliÃ³ mal: "<<ex.what()<<endl;
+      cout<<"Algo salió mal: "<<ex.what()<<endl;
     }
 
     cout<<"Desea agregar otro libro? (s/n): ";
@@ -38,7 +38,7 @@ void UserInterface::addBook() {
 
   cout<<endl;
 
-  if(op!='S' and op!='N') cout<<"OpciÃ³n invÃ¡lida!"<<endl;
+  if(op!='S' and op!='N') cout<<"Opción inválida!"<<endl;
 
   cout<<"Presione ENTER para continuar. . .";
   getchar();
@@ -49,7 +49,7 @@ void UserInterface::deleteBook() {
   string str;
 
   system("cls");
-  cout<<"*** Eliminar libro ***"<<endl<<endl<<"TÃ­tulo del libro: ";
+  cout<<"*** Eliminar libro ***"<<endl<<endl<<"Título del libro: ";
   getline(cin, str);
   book.setTitle(str);
 
@@ -59,7 +59,7 @@ void UserInterface::deleteBook() {
     BST<Book>::Position pos = books->findData(book);
     books->deleteData(pos);
   }catch(const typename BST<Book>::Exception& ex){
-    cout<<"Algo saliÃ³ mal: "<<ex.what()<<endl;
+    cout<<"Algo salió mal: "<<ex.what()<<endl;
   }
 
   cout<<"Presione ENTER para continuar. . .";
@@ -71,7 +71,7 @@ void UserInterface::findBook() {
   string str;
 
   system("cls");
-  cout<<"*** Buscar libro ***"<<endl<<endl<<"TÃ­tulo del libro: ";
+  cout<<"*** Buscar libro ***"<<endl<<endl<<"Título del libro: ";
   getline(cin, str);
   book.setTitle(str);
 
@@ -81,7 +81,7 @@ void UserInterface::findBook() {
     BST<Book>::Position pos = books->findData(book);
     cout << books->retrieve(pos).toString()<<endl;
   }catch(const typename BST<Book>::Exception& ex){
-    cout<<"Algo saliÃ³ mal: "<<ex.what()<<endl;
+    cout<<"Algo salió mal: "<<ex.what()<<endl;
   }
 
   cout<<endl;
@@ -102,7 +102,7 @@ void UserInterface::recorridoPreOrder() {
 
 void UserInterface::recorridoInOrder() {
   system("cls");
-  cout <<"Recorrido Pre orden"<<endl
+  cout <<"Recorrido In orden"<<endl
        <<endl
        <<books->parseInOrder()<<endl
        <<endl
@@ -112,7 +112,7 @@ void UserInterface::recorridoInOrder() {
 
 void UserInterface::recorridoPostOrder() {
   system("cls");
-  cout <<"Recorrido Pre orden"<<endl
+  cout <<"Recorrido Post orden"<<endl
        <<endl
        <<books->parsePostOrder()<<endl
        <<endl
@@ -142,9 +142,9 @@ void UserInterface::importBackup() {
 
   try{
     books->importFromFile(str);
-    cout<<"Datos leÃ­dos correctamente!"<<endl;
+    cout<<"Datos leídos correctamente!"<<endl;
   }catch(const ios_base::failure& ex){
-    cout<<"Algo saliÃ³ mal: "<<ex.what()<<endl;
+    cout<<"Algo salió mal: "<<ex.what()<<endl;
   }
 
   cout<<"Presione ENTER para continuar. . .";
@@ -166,7 +166,7 @@ void UserInterface::exportBackup() {
     books->exportToFile(str);
     cout<<"Datos guardados correctamente!"<<endl;
   }catch(const ios_base::failure& ex){
-    cout<<"Algo saliÃ³ mal: "<<ex.what()<<endl;
+    cout<<"Algo salió mal: "<<ex.what()<<endl;
   }
 
   cout<<"Presione ENTER para continuar. . .";
@@ -176,11 +176,10 @@ void UserInterface::exportBackup() {
 UserInterface::UserInterface() {
   unsigned short op;
   books=new BST<Book>();
-  setlocale(LC_ALL, "Spanish");
 
   do{
-    setlocale(LC_ALL, "Spanish");system("cls");
-    cout<<"--- -- - M E N Ãš - -- ---"<<endl
+    system("cls");
+    cout<<"--- -- - M E N U - -- ---"<<endl
         <<endl
         <<"1. Agregar un libro"<<endl
         <<"2. Eliminar un libro"<<endl
@@ -192,7 +191,7 @@ UserInterface::UserInterface() {
         <<"8. Recuperar"<<endl
         <<"9. Guardar"<<endl
         <<"0. Salir"<<endl
-        <<"OpciÃ³n: ";
+        <<"Opción: ";
     cin>>op;
     cin.ignore();
 
@@ -240,7 +239,7 @@ UserInterface::UserInterface() {
         break;
 
       default:
-        cout<<"OpciÃ³n invÃ¡lida!"<<endl
+        cout<<"Opción inválida!"<<endl
             <<"Presione ENTER para continuar. . .";
         getchar();
         break;

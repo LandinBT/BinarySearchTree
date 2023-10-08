@@ -406,7 +406,7 @@ void BST<T>::importFromFile(const string& fileName) {
       try {
         insertData(data);
       } catch (const Exception& ex) {
-        cout << "Algo salió mal: " << ex.what() << endl;
+        throw Exception(ex.what());
       }
     }
   }
@@ -430,7 +430,7 @@ void BST<T>::exportToFile(const string& fileName) {
 
   while (temp != nullptr or !stackPos.empty()) {
     while (temp != nullptr) {
-      myFile << temp->getData() << "#";
+      myFile << temp->getData();
       stackPos.push(temp);
       temp = temp->getLeft();
       firstNode = false;
